@@ -1,25 +1,29 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+const path = require('path');
 const port = 3000;
 const pgController = require('./controller/pgcontroller');
 
+app.use('/', express.static(path.join(__dirname, '../bundle')));
 app.use(express.json());
+app.use(cors());
 // app.get('/', (req, res) => {
 //   res.json('Testing');
 // });
 
-app.post('/', pgController.createTask, (req, res) => {
+app.post('/api/', pgController.createTask, (req, res) => {
   res.json(' created task');
 });
 
-app.get('/', pgController.readTable, (req, res) => {
+app.get('/api/list', pgController.readTable, (req, res) => {
   res.json(res.locals.response);
 });
 
-app.put('/update/:id', pgController.updateTask, (req, res) => {
+app.put('/api/update/:id', pgController.updateTask, (req, res) => {
   res.json('updated task');
 });
-app.delete('/delete/:id', pgController.deleteTask, (req, res) => {
+app.delete('/api/delete/:id', pgController.deleteTask, (req, res) => {
   res.json(' deleted task');
 });
 

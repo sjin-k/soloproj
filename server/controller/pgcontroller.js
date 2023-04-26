@@ -8,6 +8,7 @@ pgController.createTable = (req, res, next) => {
 };
 
 pgController.createTask = (req, res, next) => {
+  console.log(req.body);
   const {
     task,
     description
@@ -26,7 +27,7 @@ pgController.createTask = (req, res, next) => {
   });
 };
 pgController.readTable = (req, res, next) => {
-  client.query('SELECT (task, description) FROM todo', (err, result) => {
+  client.query('SELECT (task_id, task, description) FROM todo', (err, result) => {
     if (err) {
       return next({
         log: 'Express error handler in readTask',
