@@ -8,7 +8,6 @@ pgController.createTable = (req, res, next) => {
 };
 
 pgController.createTask = (req, res, next) => {
-  console.log(req.body);
   const {
     task,
     description

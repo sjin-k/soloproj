@@ -20,7 +20,7 @@ app.get('/api/list', pgController.readTable, (req, res) => {
   res.json(res.locals.response);
 });
 
-app.put('/api/update/:id', pgController.updateTask, (req, res) => {
+app.patch('/api/update/:id', pgController.updateTask, (req, res) => {
   res.json('updated task');
 });
 app.delete('/api/delete/:id', pgController.deleteTask, (req, res) => {

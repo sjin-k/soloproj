@@ -2,12 +2,146 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border: 0;
+  font-size: 12px;
 }
 
-#tasksDisplay {
-
-}
-
-.task {
-  
+body {
+  background-image: url('https://wallpapercave.com/wp/wp2754860.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  #root {
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+    #app {
+    display: flex;
+    justify-content: center;
+    align-items:  center;
+      #container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position:absolute;
+        bottom: 20rem;
+        left:10em;
+        width: 45rem;
+        height: 40rem;
+        background-color: #f9f9f9;
+        border-left: 1.5px solid #6e87ee;
+        border-right:1.5px solid #6e87ee;
+        border-bottom: 1.5px solid #6e87ee;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        input[type="text"]{
+          // border: none;
+          border-style: hidden;
+        }
+        input:focus{
+          outline: none;
+        }
+        
+        #hContainer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #2b66e2;
+          width: 100%;
+          color: whitesmoke;
+          font-weight: bold;
+          font-size: 16px;
+          border-bottom: 1px solid #ccc;
+          border-radius: 5px 5px 0 0;
+          h1 {
+            font-size: 1rem;
+            padding: .6rem;
+            padding-left: 1.5rem;
+          }
+          #closeButton{
+            margin-right: .4rem;
+            border: .07rem solid white;
+            border-radius: 4px;
+            background-color: #d9534f;
+            height: 1.5rem;
+            width: 1.5rem;
+            cursor: pointer;
+          }
+        }
+        #tasksDisplay {
+          margin: .5rem  .5rem .0rem  .5rem ;
+          border-top: .2rem solid #94918b;
+          border-left: .2rem solid #94918b;
+          border-right: .1rem solid #ccc;
+          border-bottom: .1rem solid #94918b ;
+          display: flex;
+          flex-direction: column;
+          height: 40rem;
+          overflow: auto;
+          .task {
+            display: flex;
+            justify-content: space-between;
+            height: 3rem;
+            width: 42rem;
+            padding: .5rem;
+            form {
+              width: 39rem;
+              display: flex;
+              justify-content: space-between;
+              .updateTask{
+                width:12rem;
+              }
+              .updateDescription{
+                width:17rem
+              }
+              input[type="submit"]{
+                border: 1px solid #395e7f;
+                padding: .07rem;
+                border-radius: 2px;
+                background-color: #f7f7f2;
+                margin-left: 1rem;
+                width: 5rem;
+              }
+            }
+            button {
+              width: 5rem;
+              border: 1px solid #395e7f;
+              padding: 1px;
+              border-radius: 2px;
+              background-color: #f7f7f2;
+              margin-left: 1rem;
+            }
+          }
+        }
+        #createTask {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          border-top: 1px solid #ccc;
+          height: 1.9rem;
+          padding-left: .5rem;
+          padding-top: .3rem;
+          margin-bottom: .3rem;
+          form{
+            display: flex;
+            flex-direction: row;
+            .formInput{
+              width: 20rem;
+            }
+            input[type="submit"]{
+              justify-content: end;
+              padding: .3rem;
+              font-size: 10px;
+              background-color: #007bff;
+              color: #fff;
+              border: none;
+              border-radius: 2px;
+              cursor: pointer;
+              width: 4rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }

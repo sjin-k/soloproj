@@ -5,9 +5,15 @@ import TasksDisplay from './TasksDisplay.jsx';
 const Container = () => {
   return (
     <div id='container'>
-      To Do List
-      <CreateTask/>
+      <div id='hContainer'>
+        <h1>Read To Do List</h1>
+        <button
+          onClick={() => { alert(`Your computer might be at risk! `); }}
+          id='closeButton'
+        />
+      </div>
       <TasksDisplay/>
+      <CreateTask/>
     </div>
   );
 };

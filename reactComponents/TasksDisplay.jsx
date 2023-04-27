@@ -7,14 +7,13 @@ const TasksDisplay = () => {
     fetch('/api/list')
       .then(response => response.json())
       .then(response => {
-        console.log(response);
         setData(response);
       });
   }, []);
   return (
     <div id='tasksDisplay'>
-      {data.map((obj, index) => {
-        return <Task data={obj.row} key={index}></Task>;
+      {data.map(el => el.row.slice(1, -1).split(',')).sort((a, b) => a[0] - b[0]).map((el, index) => {
+        return <Task data={el} key={index}></Task>;
       })}
     </div>
   );

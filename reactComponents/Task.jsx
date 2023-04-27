@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Tasks = (props) => {
-  const taskString = props.data.slice(1, -1).split(',');
+  if (props.data[1].includes(' ')) {
+    props.data[1] = props.data[1].slice(1, -1);
+  }
+  if (props.data[2].includes(' ')) {
+    props.data[2] = props.data[2].slice(1, -1);
+  }
+  const [task, setTask] = useState(props.data[1]);
+  const [description, setDescription] = useState(props.data[2]);
   function deleteTask () {
-    fetch(`/api/delete/${taskString[0]}`,
+    fetch(`/api/delete/${props.data[0]}`,
       {
         method: 'DELETE'
       }
@@ -11,24 +18,46 @@ const Tasks = (props) => {
     window.location.reload();
   }
   function updateTask () {
-    fetch(`/api/update/${taskString[0]}`,
+    fetch(`/api/update/${props.data[0]}`,
       {
-        method: 'PUT',
+        method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          user_id: null,
-          task,
-          description
-        })
-      });
+        body: JSON.stringify(
+          {
+            task,
+            description
+          }
+        )
+      }
+    );
   }
   return (
     <div className='task'>
-      <p>{taskString[1]}</p>
-      <p>{taskString[2]}</p>
+      <form onSubmit={updateTask}>
+        <input
+          type="text"
+          className='updateTask'
+          onChange={e => {
+            setTask(e.target.value);
+          }}
+          defaultValue={props.data[1]}
+        />
+        <input
+          type="text"
+          className='updateDescription'
+          onChange={e => {
+            setDescription(e.target.value);
+          }}
+          defaultValue={props.data[2]}
+        />
+        <input
+          type="submit"
+          value={'Update'}
+        />
+      </form>
       <button
-      onClick={deleteTask}
-      >remove</button>
+        onClick={deleteTask}
+      >Delete</button>
     </div>
   );
 };
