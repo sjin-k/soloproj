@@ -1,5 +1,5 @@
 const pg = require('pg');
-const conString = 'postgres://ebxjbhom:EgqqfRwi12To3bnGu7iwqgGKTPnQ6p_W@lallah.db.elephantsql.com/ebxjbhom';
+const conString = '';
 
 const pgController = {};
 

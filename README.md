@@ -1,1 +1,1 @@
-# soloproj
+CRUD functional to do list. Working with React functional components, express, postgresql, scss. 
