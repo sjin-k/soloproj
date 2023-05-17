@@ -4,11 +4,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isProduction = process.env.NODE_ENV === 'production';
+// const isProduction = process.env.NODE_ENV === 'production';
 
-const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
+// const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 
-const config = {
+module.exports = {
+  mode: 'development',
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'bundle')
@@ -48,12 +49,12 @@ const config = {
       {
         test: /\.s[ac]ss$/i,
         exclude: /node_modules/,
-        use: [stylesHandler, 'css-loader', 'postcss-loader', 'sass-loader']
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
       },
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        use: [stylesHandler, 'css-loader', 'postcss-loader']
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       },
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
@@ -67,13 +68,14 @@ const config = {
   }
 };
 
-module.exports = () => {
-  if (isProduction) {
-    config.mode = 'production';
+// module.exports = config;
+// () => {
+//   // if (isProduction) {
+//   //   config.mode = 'production';
 
-    config.plugins.push(new MiniCssExtractPlugin());
-  } else {
-    config.mode = 'development';
-  }
-  return config;
-};
+//   //   config.plugins.push(new MiniCssExtractPlugin());
+//   // } else {
+//   //   config.mode = 'development';
+//   // }
+//   return config;
+// };

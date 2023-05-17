@@ -8,7 +8,8 @@
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve",
-    "express": "nodemon server/server.js"
+    "express": "nodemon server/server.js",
+    "start": "NODE_ENV=development webpack serve --open & nodemon server/server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
